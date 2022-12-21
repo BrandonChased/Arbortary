@@ -1,0 +1,88 @@
+* {
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+* {
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p,.links {
+    font-size: 1.3rem;
+}
+
+.container {
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+}
+
+.posted-recipes {
+    display: flex;
+    padding: 1rem 0;
+    justify-content: space-between;
+}
+
+.links {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* table {
+    border: 4px solid black;
+} */
+
+th {
+    border: 3px solid black;
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem 1rem;
+}
+
+td {
+    border: 2px solid black;
+    text-align: center;
+    padding: 1rem 1rem;
+    background-color: lightslategrey;
+    font-size: 1.5rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+a {
+    font-size: 2rem;
+}
+.little-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}

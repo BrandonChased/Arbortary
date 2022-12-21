@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+    <body>
+        <div class="container">
+            <div class="top">
+                <h1>Arbortary</h1>
+                <div class="top-nav">
+                    <a href="/user/account">My trees</a>
+                    <h2> Welcome, {{ session["username"] }}</h2>
+                </div>
+            </div>
+            <nav>
+                <h2>A site to track randomly planted tree</h2>
+                <div>
+                    <a href="/create_tree">Plant a tree</a>
+                    <a href="/logout">logout</a>
+                </div>
+            </nav>
+            <table>
+                <tr>
+                    <th>Species</th>
+                    <th>Planted By</th>
+                    <th>Visitors</th>
+                    <th>Actions</th>
+                </tr>
+                    {% for tree in trees %}
+                    <tr>
+                        <td>{{ tree.species}}</td>
+                        <td> {{ tree.user.first_name }}</td>
+                        <td>{{ tree.visitors | length }}</td>
+                        <td> <a href="view_tree/{{ tree.id }}">details</a></td>
+                    </tr>
+                    {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
+</body>
+</html>

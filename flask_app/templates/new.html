@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/new.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <h1>Arbortary</h1>
+            <a href="/user/account">My trees</a>
+            <h2> Welcome, {{ session["username"] }}</h2>
+        </div>
+        <nav>
+            <h2>A site to track randomly planted tree</h2>
+            <div>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">logout</a>
+            </div>
+        </nav>
+        <main>
+            <h1>Arbitrarily Plant a New Tree</h1>
+            <p></p>
+            <form action="/add/tree" method="POST">
+                {% with messages = get_flashed_messages(category_filter=["form"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <p class="flash-message">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <div class="form-content">
+                    <div class="inputs">
+                        <label for="species">Species:</label>
+                        <input type="text" name="species">
+                    </div>
+                    <div class="inputs">
+                        <label for="location">Location:</label>
+                        <input name="location" type="text">
+                    </div>
+                    <div class="inputs">
+                        <label for="reason">Reason: </label>
+                        <textarea name="reason" type="text"></textarea>
+                    </div>
+                    <div class="inputs">
+                        <label for="date_planted">Date Planted:</label>
+                        <input name="date_planted" type="date">
+                    </div>
+                </div>
+                <button>plant</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

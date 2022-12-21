@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My trees</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="little-container">
+            <h1>Arbortary</h1>
+            <h2> Welcome, {{ session["username"] }}</h2>
+        </div>
+
+        <nav>
+            
+            <h2>A site to track randomly planted tree</h2>
+            <div>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">logout</a>
+            </div>
+        </nav>
+        <div>
+            <h2>Manage my Trees</h2>
+            <table>
+                <tr>
+                    <th>Species</th>
+                    <th>Date Planted</th>
+                    <th>Actions</th>
+                </tr>
+                {% for tree in trees %}
+                <tr>
+                    <td>{{ tree.species }}</td>
+                    <td>{{ tree.date_planted }}</td>
+                    <td>
+                        <a href="/del/tree/{{ tree.id }}">delete</a>
+                        <a href="/edit/tree/{{ tree.id }}">edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

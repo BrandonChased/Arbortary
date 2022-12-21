@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='css/view.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <h1>Arbortary</h1>
+            <a href="/user/account">My trees</a>
+            <h2> Welcome, {{ session["username"] }}</h2>
+        </div>
+        <nav>
+            <h2>A site to track randomly planted tree</h2>
+            <div class="top-nav">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">logout</a>
+            </div>
+        </nav>
+        <div>
+            <div>
+                <h1> {{ tree.title }} </h1>
+            </div>
+            <div class="content">
+                <div>
+                    <h3> Visited by: </h3>
+                    <div class="visited-by">
+                        {% for visitor in visitors %}
+                        <p>{{ visitor.user.first_name }}</p>
+                        {% endfor %}
+                    </div>
+                    
+                    {% set ns = namespace(found=False) %}
+                    {% for visitor in visitors %}
+    
+                        {% if visitor.user_id == session["uid"]%}
+                            {% set ns.found = True %}
+                        {% endif %}
+    
+                    {% endfor %}
+                    
+                    {% if ns.found == False %}
+                    <a href="/add/visitor/{{ tree.id }}">Did you visit this tree ? </a>
+                    {% else %}
+    
+                    {% endif %}
+            </div>
+            <div>
+                <h2>{{ tree.species }} planted by {{ tree.user.first_name  + " " + tree.user.last_name}}</h2>
+                <h2>Where: {{ tree.location }}</h2>
+                <h2>When: {{ tree.date_planted }}</h2>
+                <h2>Reason:  {{ tree.reason }}</h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
